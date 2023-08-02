@@ -2,10 +2,13 @@
 
 # take random word out of txt file and convert to underscores
 class RandomWord
+  attr_accessor :word, :word_as_underscore
+
   def initialize
     @file = 'random_words.txt'
     @array = []
     @word_as_underscore = []
+    @word = word
   end
 
   def convert_to_array
@@ -31,6 +34,7 @@ class RandomWord
     word.length.times do
       @word_as_underscore << '_'
     end
-    p @word_as_underscore.join
+    @word_as_underscore = @word_as_underscore.join
+    @word_as_underscore
   end
 end
