@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-# take random word out of txt file
+# take random word out of txt file and convert to underscores
 class RandomWord
   def initialize
     @file = 'random_words.txt'
     @array = []
+    @word_as_underscore = []
   end
 
   def convert_to_array
@@ -25,7 +26,11 @@ class RandomWord
     word
   end
 
-  def output_word
-    puts check_length
+  def output_word_as_underscore
+    word = check_length
+    word.length.times do
+      @word_as_underscore << '_'
+    end
+    p @word_as_underscore.join
   end
 end
