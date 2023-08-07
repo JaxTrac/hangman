@@ -8,7 +8,7 @@ class RandomWord
     @file = 'random_words.txt'
     @array = []
     @word_as_underscore = []
-    @word = word
+    @word = check_length
   end
 
   def convert_to_array
@@ -30,8 +30,7 @@ class RandomWord
   end
 
   def output_word_as_underscore
-    word = check_length
-    word.length.times do
+    @word.length.times do
       @word_as_underscore << '_'
     end
     @word_as_underscore = @word_as_underscore.join
