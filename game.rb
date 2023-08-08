@@ -14,10 +14,20 @@ class Game
   def start
     puts 'Welcome to hangman! This is your word:'
     p @word_underscore
+    p @word.word
     puts 'Please guess a letter:'
-    10.times do
+    rounds(10)
+  end
+
+  def rounds(number_of_rounds)
+    rounds = number_of_rounds
+    rounds.times do
+      rounds -= 1
       @guess.letter_guess
       compare
+      break if check_win
+
+      puts "You got #{rounds} left!"
     end
   end
 
@@ -26,5 +36,9 @@ class Game
       @word_underscore[index] = @guess.guess if letter == @guess.guess
     end
     p @word_underscore
+  end
+
+  def check_win
+    @word_underscore == @word.word
   end
 end
