@@ -9,6 +9,7 @@ class Game
     @guess = Guess.new
     @word = RandomWord.new
     @word_underscore = @word.output_word_as_underscore
+    @number_of_guesses = 10
   end
 
   def start
@@ -16,18 +17,18 @@ class Game
     p @word_underscore
     p @word.word
     puts 'Please guess a letter:'
-    rounds(10)
+    rounds
   end
 
-  def rounds(number_of_rounds)
-    rounds = number_of_rounds
-    rounds.times do
-      rounds -= 1
+  def rounds
+    @number_of_guesses.times do
       @guess.letter_guess
       compare
       break if check_win
 
-      puts "You got #{rounds} left!"
+      @number_of_guesses -= 1
+
+      puts "You got #{@number_of_guesses} left!"
     end
   end
 
